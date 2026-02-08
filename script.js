@@ -19,7 +19,7 @@ document.getElementById("emailForm").addEventListener("submit", function(e){
 
     const formData = new FormData(this);
 
-    fetch("https://script.google.com/macros/s/AKfycbxHPq9aOKWg6Sq9nLsP75mh7x9FmwCJeqTfW6tDs42eCCum65eA2B_3knv6d9pBUEABhg/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyIVn_HaZltg_2lfuPI7HG6w2cr-Dtx6gUmh3YpvuHN3AqDXfpuX_FbYbaKRKMUzVCawA/exec", {
         method: "POST",
         body: new URLSearchParams(formData)
     })
@@ -37,12 +37,4 @@ document.getElementById("emailForm").addEventListener("submit", function(e){
     })
     .catch(err => console.error(err));
 });
-
-var token = e.parameter["g-recaptcha-response"];
-var secret = "6Leai2QsAAAAALB-oNJOwt2ksFY1KEHiO-f2WSgm";
-var response = UrlFetchApp.fetch(
-  "https://www.google.com/recaptcha/api/siteverify?secret=" + secret + "&response=" + token
-);
-var result = JSON.parse(response.getContentText());
-if(!result.success) return ContentService.createTextOutput("captcha_failed");
 
