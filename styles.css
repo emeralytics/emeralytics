@@ -707,3 +707,13 @@
   from { transform: translateY(-20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+/* ===== reCAPTCHA Specific Styling ===== */
+.g-recaptcha {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  transform: scale(0.95); /* optional: scale down slightly for smaller modals */
+  transform-origin: center;
+}
+
