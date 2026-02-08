@@ -19,7 +19,7 @@ document.getElementById("emailForm").addEventListener("submit", function(e){
 
     const formData = new FormData(this);
 
-    fetch("https://script.google.com/macros/s/AKfycbyIVn_HaZltg_2lfuPI7HG6w2cr-Dtx6gUmh3YpvuHN3AqDXfpuX_FbYbaKRKMUzVCawA/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyxOGCvj_-o0SDCy4o3ez5ipjG64TOjTp8XUg3wCWKZjyyh4RSqHbFhDsjc9N1jVzp3UQ/exec", {
         method: "POST",
         body: new URLSearchParams(formData)
     })
@@ -31,7 +31,9 @@ document.getElementById("emailForm").addEventListener("submit", function(e){
             closeContactModal();
         } else if(response === "already_submitted") {
             showAlert("You have already submitted your email today. Please try again tomorrow.");
-        } else {
+        } else if (response === "captcha_failed") {
+            showAlert("Please verify that you are human.");
+        }else {
             showAlert("Something went wrong. Please try again.");
         }
     })
