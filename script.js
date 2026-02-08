@@ -37,3 +37,12 @@ document.getElementById("emailForm").addEventListener("submit", function(e){
     })
     .catch(err => console.error(err));
 });
+
+var token = e.parameter["g-recaptcha-response"];
+var secret = "6Leai2QsAAAAALB-oNJOwt2ksFY1KEHiO-f2WSgm";
+var response = UrlFetchApp.fetch(
+  "https://www.google.com/recaptcha/api/siteverify?secret=" + secret + "&response=" + token
+);
+var result = JSON.parse(response.getContentText());
+if(!result.success) return ContentService.createTextOutput("captcha_failed");
+
