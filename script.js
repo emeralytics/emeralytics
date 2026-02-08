@@ -1,54 +1,59 @@
-function showAlert(message) {
-  const alertModal = document.getElementById("alertModal");
-  const alertMessage = document.getElementById("alertMessage");
-  alertMessage.textContent = message;
-  alertModal.classList.add("show");
 
-  setTimeout(() => {
-    alertModal.classList.remove("show");
-  }, 3000);
-}
+// ==============================================================
 
-function closeAlertModal() {
-  document.getElementById("alertModal").classList.remove("show");
-}
+  // ===== Contact Modal Scripts =====
+  function openContactModal() {
+    document.getElementById("contactModal").style.display = "flex";
+  }
 
-document.getElementById("emailForm").addEventListener("submit", function(e){
+  function closeContactModal() {
+    document.getElementById("contactModal").style.display = "none";
+  }
+
+  window.onclick = function(e) {
+    const modal = document.getElementById("contactModal");
+    if (e.target === modal) closeContactModal();
+  };
+
+  // ===== Alert Modal Scripts =====
+  function showAlert(message) {
+    document.getElementById("alertMessage").innerText = message;
+    document.getElementById("alertModal").style.display = "flex";
+  }
+
+  function closeAlertModal() {
+    document.getElementById("alertModal").style.display = "none";
+  }
+
+  // ===== Form Submission =====
+  document.getElementById("emailForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    const formData = new FormData(this);
+    const form = e.target;
+    const formData = new FormData(form);
 
     fetch("https://script.google.com/macros/s/AKfycbyvyj9XCad0YI190QPMOLfPiU7PeLaxeHzCPwbplzo0p4rq6Z3drINNisMWbYTNiFATOg/exec", {
-        method: "POST",
-        body: new URLSearchParams(formData)
+      method: "POST",
+      body: new URLSearchParams(formData)
     })
-    .then(response => response.text()) // ✅ get text from response
-    .then(text => {
-        if (text === "success") {
-            showAlert("Thanks! We’ll be in touch soon.");
-            this.reset();
-            closeModal();
-        } else if (text === "already_submitted") {
-            showAlert("You have already submitted your email today.");
-        } else if (text === "captcha_failed") {
-            showAlert("Please complete the reCAPTCHA.");
-        } else {
-            showAlert("Something went wrong. Please try again.");
-        }
+    .then(res => res.text())
+    .then(response => {
+      if (response === "success") {
+        showAlert("Thank you! Your email has been submitted.");
+        form.reset();
+        grecaptcha.reset(); // Reset reCAPTCHA
+      } else if (response === "already_submitted") {
+        showAlert("You have already submitted your email today.");
+      } else if (response === "captcha_failed") {
+        showAlert("Captcha verification failed. Please try again.");
+        grecaptcha.reset();
+      } else {
+        showAlert("An error occurred. Please try again later.");
+        grecaptcha.reset();
+      }
     })
-    .catch(err => console.error(err));
-});
-
-
-// Contact Modal Controls
-function openContactModal() {
-  document.querySelector(".contact-modal").style.display = "flex";
-}
-
-function closeContactModal() {
-  document.querySelector(".contact-modal").style.display = "none";
-}
-
-window.onclick = function(e) {
-  const modal = document.querySelector(".contact-modal");
-  if (e.target === modal) closeContactModal();
-}
+    .catch(err => {
+      console.error(err);
+      showAlert("An error occurred. Please try again later.");
+      grecaptcha.reset();
+    });
+  });
