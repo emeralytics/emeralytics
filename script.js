@@ -19,23 +19,24 @@ document.getElementById("emailForm").addEventListener("submit", function(e){
 
     const formData = new FormData(this);
 
-    fetch("https://script.google.com/macros/s/AKfycbyxOGCvj_-o0SDCy4o3ez5ipjG64TOjTp8XUg3wCWKZjyyh4RSqHbFhDsjc9N1jVzp3UQ/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzPqXoKouTYKfsy5D_YZ07EzKw9mSkVp4t-DIESpnf0S4kWvT5cSSEopWyehtv255TPUg/exec", {
         method: "POST",
         body: new URLSearchParams(formData)
     })
-        .then(response => {
-        if (response === "success") {
+    .then(response => response.text())  // ✅ Convert response to text
+    .then(text => {
+        if (text === "success") {
             showAlert("Thanks! We’ll be in touch soon.");
             this.reset();
-            closeModal();
-        } else if (response === "already_submitted") {
+            closeContactModal();
+        } else if (text === "already_submitted") {
             showAlert("You have already submitted your email today.");
-        } else if (response === "captcha_failed") {
+        } else if (text === "captcha_failed") {
             showAlert("Please complete the reCAPTCHA.");
         } else {
             showAlert("Something went wrong. Please try again.");
         }
-        })
+    })
     .catch(err => console.error(err));
 });
 
