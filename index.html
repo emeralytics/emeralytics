@@ -120,23 +120,37 @@
       <h3>Get in Touch</h3>
       <p>Leave your email and we’ll reach out shortly.</p>
 
-    <form id="emailForm">
-      <input type="email" name="email" placeholder="Your email address" required />
-      <div class="g-recaptcha" data-sitekey="6Leai2QsAAAAAHyejVPDlcxW8ZWyMT_vaGIXkCe4"></div>
-      <button type="submit">Submit</button>
-    </form>
+      <form id="emailForm">
+        <input type="email" name="email" placeholder="Your email address" required />
+        <div class="g-recaptcha" data-sitekey="Y6LfTl2QsAAAAAI3dgMLH7X4Pny8IDQ6CDFaebb2z"></div>
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Custom Alert Modal -->
+      <div id="alertModal" class="alert-modal">
+        <div class="alert-modal-content">
+          <span class="alert-close" onclick="closeAlertModal()">&times;</span>
+          <p id="alertMessage"></p>
+        </div>
+      </div>
+
+      <!-- Contact Modal -->
+      <div class="contact-modal">
+        <div class="contact-modal-content">
+          <span class="close" onclick="closeContactModal()">&times;</span>
+          <h3>Get in Touch</h3>
+          <p>Leave your email and we’ll reach out shortly.</p>
+          <form id="emailForm">
+            <input type="email" name="email" placeholder="Your email address" required />
+            <div class="g-recaptcha" data-sitekey="6LfTl2QsAAAAAI3dgMLH7X4Pny8IDQ6CDFaebb2z"></div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
 
       <small>
         By submitting, you agree to be contacted by Emeralytics.
       </small>
-    </div>
-  </div>
-
-    <!-- Custom Alert Modal -->
-  <div id="alertModal" class="alert-modal">
-    <div class="alert-modal-content">
-      <span class="alert-close" onclick="closeAlertModal()">&times;</span>
-      <p id="alertMessage"></p>
     </div>
   </div>
 
