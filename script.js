@@ -23,20 +23,19 @@ document.getElementById("emailForm").addEventListener("submit", function(e){
         method: "POST",
         body: new URLSearchParams(formData)
     })
-    .then(res => res.text())
-    .then(response => {
-        if(response === "success") {
+        .then(response => {
+        if (response === "success") {
             showAlert("Thanks! We’ll be in touch soon.");
             this.reset();
-            closeContactModal();
-        } else if(response === "already_submitted") {
-            showAlert("You have already submitted your email today. Please try again tomorrow.");
+            closeModal();
+        } else if (response === "already_submitted") {
+            showAlert("You have already submitted your email today.");
         } else if (response === "captcha_failed") {
-            showAlert("Please verify that you are human.");
-        }else {
+            showAlert("Please complete the reCAPTCHA.");
+        } else {
             showAlert("Something went wrong. Please try again.");
         }
-    })
+        })
     .catch(err => console.error(err));
 });
 
