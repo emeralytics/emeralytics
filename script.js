@@ -18,7 +18,7 @@ document.getElementById("emailForm").addEventListener("submit", function(e) {
 
   const formData = new FormData(this);
 
-  fetch("https://script.google.com/macros/s/AKfycbybHO0ssjaDFs_oS7UlfMTPywqkW2zigItmud3kxMj2_lsf36mgXAvgkICuKlrCLOjUlg/exec", { 
+  fetch("https://script.google.com/macros/s/AKfycbyvyj9XCad0YI190QPMOLfPiU7PeLaxeHzCPwbplzo0p4rq6Z3drINNisMWbYTNiFATOg/exec", { 
     method: "POST",
     body: new URLSearchParams(formData)
   })
@@ -56,3 +56,4 @@ window.onclick = function(e) {
   const modal = document.querySelector(".contact-modal");
   if (e.target === modal) closeContactModal();
 }
+
