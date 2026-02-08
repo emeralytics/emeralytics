@@ -120,9 +120,10 @@
       <h3>Get in Touch</h3>
       <p>Leave your email and we’ll reach out shortly.</p>
 
+      <!-- Contact Form -->
       <form id="emailForm">
-        <input type="email" name="email" placeholder="exampl@gmail.com" required />
-        <div class="g-recaptcha" data-sitekey="6LfNm2QsAAAAAHNaXThvqZv0m1Jlqs-D13DcrHzI"></div>
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <div class="g-recaptcha" data-sitekey="6LfNmGQsAAAAAGEG0XVxdy0WzmDz9AjbQx0q07lJ"></div>
         <button type="submit">Submit</button>
       </form>
 
@@ -134,25 +135,14 @@
         </div>
       </div>
 
-      <!-- Contact Modal -->
-      <div class="contact-modal">
-        <div class="contact-modal-content">
-          <span class="close" onclick="closeContactModal()">&times;</span>
-          <h3>Get in Touch</h3>
-          <p>Leave your email and we’ll reach out shortly.</p>
-          <form id="emailForm">
-            <input type="email" name="email" placeholder="Your email address" required />
-            <div class="g-recaptcha" data-sitekey="6LfNm2QsAAAAAHNaXThvqZv0m1Jlqs-D13DcrHzI"></div>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
-
       <small>
         By submitting, you agree to be contacted by Emeralytics.
       </small>
     </div>
   </div>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="script.js"></script>
 
 
 
@@ -315,10 +305,5 @@
     };
   </script>
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-  <script src="script.js"></script>
-
 </body>
 </html>
-
