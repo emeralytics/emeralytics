@@ -116,7 +116,7 @@
   <!-- ===== Contact Modal ===== -->
   <div id="contactModal" class="contact-modal">
     <div class="contact-modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="close" onclick="closeContactModal()">&times;</span>
       <h3>Get in Touch</h3>
       <p>Leave your email and we’ll reach out shortly.</p>
 
@@ -125,7 +125,6 @@
       <div class="g-recaptcha" data-sitekey="6Leai2QsAAAAAHyejVPDlcxW8ZWyMT_vaGIXkCe4"></div>
       <button type="submit">Submit</button>
     </form>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
       <small>
         By submitting, you agree to be contacted by Emeralytics.
@@ -292,15 +291,18 @@
       document.querySelector(".contact-modal").style.display = "flex";
     }
 
-    function closeModal() {
+    function closeContactModal() {
       document.querySelector(".contact-modal").style.display = "none";
     }
 
     window.onclick = function(e) {
       const modal = document.querySelector(".contact-modal");
-      if (e.target === modal) closeModal();
+      if (e.target === modal) closeContactModal();
     };
   </script>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
   <script src="script.js"></script>
 
 </body>
